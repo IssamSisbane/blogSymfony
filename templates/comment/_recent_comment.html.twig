@@ -1,0 +1,12 @@
+
+
+{% for comment in comments %}
+<div class="card border-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header bg-transparent border-primary">{{ comment.createdAt|date('d/m/Y à h\\hi') }}</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">{{ comment.username }} a écrit :</h5>
+    <p class="card-text"><p>{{ comment.content|raw }}<p></p>
+  </div>
+
+</div>
+{% endfor %}

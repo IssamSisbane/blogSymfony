@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{post.title}}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ post.title }}</h1>
+
+        <p>Publié le {{ post.publishedAt|date('d/m/Y à h\\hi') }}</p>
+
+        {% for categorie in post.categories %}
+                    <span class="badge bg-secondary">{{ categorie.name }}</span>
+        {%  endfor %}
+
+        <div>{{post.content|raw}}</div>
+
+                
+
+        <h2>Commentaire ({{post.comments|length}})</h2>
+        {% for comment in post.comments %}
+            {% if comment.valid == 1 %}
+            <div>
+                <p>Publié par {{comment.username}}</p>
+                <div>{{comment.content|raw}}</div>
+            </div>
+            {% endif %}
+        {% else %}
+            <p>Il n'y a pas encore de commentaire</p>
+        {% endfor %}
+
+        <h2>Ajouter un commentaire</h2>
+        {{ form(formComment) }}
+    </div>
+
+{% endblock %}

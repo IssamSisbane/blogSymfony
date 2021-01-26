@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ path('monBlog') }}">MonBlog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('adminPost') }}">Posts</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" href="{{ path('allcomments') }}">Commentaires</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ path('allcomments') }}">Tous</a>
+            <a class="dropdown-item" href="{{ path('comment.invalides') }}">A valider</a>
+        </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('category') }}">Categories</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,29 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Liste des commentaires{% endblock %}
+
+{% block body %}
+    <div class="container">     
+        {% for message in app.flashes('message') %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% if invalide is defined %}
+            <h1> Voici la liste des commentaires Invalidés</h1>
+        {% else %}
+            <h1> Voici la liste des tous les commentaires </h1>
+        {% endif %}
+
+        {% for comment in comments %}
+            <a href="{{ path('comment.show',{id : comment.id }) }}" ><h2>{{ comment.id }}</h2></a>
+            <p>auteur : {{ comment.username }}</p>
+            <p>contenu : {{ comment.content|raw }}</p>
+            <p>validité : {{ comment.valid }}<p>
+            <p>Date de création : {{ comment.createdAt|date('d/m/Y à h\\hi') }}</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+

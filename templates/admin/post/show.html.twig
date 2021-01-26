@@ -1,0 +1,45 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}{{post.title}}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% for message in app.flashes('message') %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-7">
+                <h1>{{ post.title }}</h1>
+
+                {% for categorie in post.categories %}
+                                            <span class="badge bg-secondary">{{ categorie.name }}</span>
+                {%  endfor %}
+
+                <p>Publié le {{ post.publishedAt|date('d/m/Y à h\\hi') }}</p>
+
+                <div>{{post.content|raw}}</div>
+
+                <h2>Commentaire ({{post.comments|length}})</h2>
+                {% for comment in post.comments %}
+                    {% if comment.valid == 1 %}
+                    <div>
+                        <p>Publié par {{comment.username}}</p>
+                        <div>{{comment.content|raw}}</div>
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <p>Il n'y a pas encore de commentaire</p>
+                {% endfor %}
+            </div>
+            
+            <div class="col-2">
+                <a class="btn btn-outline-warning" href="{{ path('post.edit',{id : post.id }) }}" >modifier</a>
+                <a class="btn btn-outline-danger" href="{{ path('post.remove',{id : post.id }) }}" >supprimer</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

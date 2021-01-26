@@ -1,0 +1,21 @@
+#index:
+#    path: /hello/{name}
+#    controller: App\Controller\DefaultController::index
+
+#simplicity:
+#     path: /simplicity
+#     controller: App\Controller\DefaultController::simplicity
+
+#addition:
+#     path: /addition/{a}/{b}
+#     controller: App\Controller\CalculController::addition
+
+#auCarre:
+#     path: /auCarre/{a}
+#     controller: App\Controller\CalculController::auCarre
+
+#name:
+#     path: /name/{name}
+#     controller: App\Controller\HelloController::name
+
+
